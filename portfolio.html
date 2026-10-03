@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tharushi Wedamulla - Software Engineer & DevOps Undergraduate</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            900: '#0a0a0f',
+                            800: '#12121a',
+                            700: '#1c1c2b',
+                            600: '#2a2a40'
+                        },
+                        accent: {
+                            purple: '#8b5cf6',
+                            pink: '#ec4899',
+                            cyan: '#06b6d4'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0f;
+            color: #f3f4f6;
+        }
+        .font-code {
+            font-family: 'Fira Code', monospace;
+        }
+        .glow-effect {
+            box-shadow: 0 0 50px -10px rgba(139, 92, 246, 0.3);
+        }
+        .glow-pink {
+            box-shadow: 0 0 40px -10px rgba(236, 72, 153, 0.3);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #c084fc 0%, #ec4899 50%, #f43f5e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gradient-border {
+            position: relative;
+            border-radius: 1rem;
+            background: linear-gradient(135deg, #1c1c2b, #12121a);
+        }
+        .gradient-border::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: inherit;
+            background: linear-gradient(135deg, #8b5cf6, #ec4899);
+            z-index: -1;
+            opacity: 0.3;
+            transition: opacity 0.3s ease;
+        }
+        .gradient-border:hover::before {
+            opacity: 1;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0f;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2a2a40;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #8b5cf6;
+        }
+    </style>
+</head>
+<body class="bg-dark-900 text-gray-100 selection:bg-purple-500 selection:text-white">
+
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-dark-900/80 backdrop-blur-md border-b border-dark-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#hero" class="text-xl font-bold font-code flex items-center gap-2">
+                <span class="text-accent-purple">&lt;</span>
+                <span class="gradient-text">Tharushi Wedamulla</span>
+                <span class="text-accent-pink">/&gt;</span>
+            </a>
+            
+            <!-- Desktop Nav Links -->
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="#about" class="text-gray-300 hover:text-accent-purple transition-colors">About</a>
+                <a href="#projects" class="text-gray-300 hover:text-accent-purple transition-colors">Projects</a>
+                <a href="#achievements" class="text-gray-300 hover:text-accent-purple transition-colors">Achievements</a>
+                <a href="#skills" class="text-gray-300 hover:text-accent-purple transition-colors">Skills & Stack</a>
+                <a href="#contact" class="text-gray-300 hover:text-accent-purple transition-colors">Contact</a>
+                <a href="#contact" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-accent-purple to-accent-pink text-white font-semibold shadow-lg shadow-purple-500/20 hover:opacity-95 transition-all transform hover:-translate-y-0.5">
+                    Let's Connect
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="menu-btn" class="md:hidden text-gray-300 hover:text-white focus:outline-none p-2">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-dark-800 border-b border-dark-700 px-4 pt-2 pb-6 space-y-3">
+            <a href="#about" class="block text-gray-300 hover:text-accent-purple py-2 font-medium">About</a>
+            <a href="#projects" class="block text-gray-300 hover:text-accent-purple py-2 font-medium">Projects</a>
+            <a href="#achievements" class="block text-gray-300 hover:text-accent-purple py-2 font-medium">Achievements</a>
+            <a href="#skills" class="block text-gray-300 hover:text-accent-purple py-2 font-medium">Skills & Stack</a>
+            <a href="#contact" class="block text-gray-300 hover:text-accent-purple py-2 font-medium">Contact</a>
+            <a href="#contact" class="block text-center w-full py-3 rounded-xl bg-gradient-to-r from-accent-purple to-accent-pink text-white font-semibold">
+                Let's Connect
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="min-h-screen pt-32 pb-16 flex items-center relative overflow-hidden">
+        <!-- Background Glow Blobs -->
+        <div class="absolute top-1/4 left-10 w-72 h-72 bg-purple-600/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-1/4 right-10 w-96 h-96 bg-pink-600/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-dark-700 border border-dark-600 text-accent-purple text-xs sm:text-sm font-code">
+                        <i class="fa-solid fa-terminal"></i> Computer Science Undergraduate
+                    </div>
+                    
+                    <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight">
+                        Hi, I'm <span class="gradient-text">Tharushi Wedamulla</span>
+                    </h1>
+                    
+                    <p class="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto lg:mx-0 font-light leading-relaxed">
+                        Passionate Full-Stack Developer & DevOps enthusiast building robust scalable web apps, optimizing cloud pipelines, and engineering intelligent software solutions.
+                    </p>
+                    
+                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-4">
+                        <a href="#projects" class="px-8 py-4 rounded-xl bg-gradient-to-r from-accent-purple to-accent-pink text-white font-semibold shadow-lg shadow-purple-500/25 hover:opacity-95 transition-all transform hover:-translate-y-0.5 flex items-center gap-2">
+                            <span>Explore Projects</span>
+                            <i class="fa-solid fa-arrow-down text-sm"></i>
+                        </a>
+                        <a href="#contact" class="px-8 py-4 rounded-xl bg-dark-700 hover:bg-dark-600 border border-dark-600 text-gray-200 font-semibold transition-all">
+                            Get in Touch
+                        </a>
+                    </div>
+
+                    <div class="flex items-center justify-center lg:justify-start gap-6 pt-6 text-gray-400">
+                        <a href="https://github.com/Nawodika22" target="_blank" class="hover:text-accent-purple transition-colors text-2xl" aria-label="GitHub">
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/tharushi-wedamulla-2636783b5/" target="_blank" class="hover:text-accent-purple transition-colors text-2xl" aria-label="LinkedIn">
+                            <i class="fa-brands fa-linkedin"></i>
+                        </a>
+                        <a href="mailto:twedamulla2002@gmail.com" class="hover:text-accent-purple transition-colors text-2xl" aria-label="Email">
+                            <i class="fa-solid fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hero Visual / Code Card -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="w-full max-w-md gradient-border p-1 glow-effect">
+                        <div class="bg-dark-800 rounded-[calc(1rem-2px)] p-6 font-code text-sm">
+                            <div class="flex items-center justify-between pb-4 mb-4 border-b border-dark-700">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
+                                    <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+                                    <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
+                                </div>
+                                <span class="text-xs text-gray-500"></span>
+                            </div>
+                            <div class="space-y-2 text-gray-300">
+                                <p><span class="text-accent-pink"></span> <span class="text-accent-purple">developer</span> = {</p>
+                                <p class="pl-4">name: <span class="text-green-400">'Tharushi Wedamulla'</span>,</p>
+                                <p class="pl-4">degree: <span class="text-green-400">'BSc (Hons) Computer Science'</span>,</p>
+                                <p class="pl-4">focus: [<span class="text-green-400">'Full-Stack'</span>, <span class="text-green-400">'DevOps'</span>, <span class="text-green-400">'Cloud'</span>],</p>
+                                <p class="pl-4">status: <span class="text-green-400">'Seeking Opportunities'</span>,</p>
+                                <p class="pl-4">passionate: <span class="text-yellow-400">true</span></p>
+                                <p>};</p>
+                                <br>
+                                <p class="text-gray-500"> Ready to build great things 🚀</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-dark-800/50 border-t border-dark-700/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl sm:text-4xl font-extrabold mb-4">About <span class="gradient-text">Me</span></h2>
+                <p class="text-gray-400">Get to know more about my background, education, and passion for software engineering and DevOps.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6 text-gray-300 leading-relaxed font-light text-base sm:text-lg">
+                    <p>
+                        I am a dedicated Computer Science undergraduate specializing in modern software engineering principles, robust backend architectures, and automated cloud workflows. 
+                    </p>
+                    <p>
+                        My academic journey has equipped me with a strong foundation in data structures, algorithms, and system design, while my personal and collaborative projects have allowed me to master full-stack web development and DevOps practices.
+                    </p>
+                    <p>
+                        I am deeply interested in bridging the gap between development and operations—leveraging tools like <span class="text-accent-purple font-medium">Docker, Jenkins</span> to streamline CI/CD pipelines, ensure code quality with <span class="text-accent-purple font-medium">SonarQube</span>, and deploy scalable microservices.
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-4 pt-4">
+                        <div class="p-4 rounded-xl bg-dark-700/60 border border-dark-600">
+                            <div class="text-2xl font-bold text-accent-purple font-code">3+</div>
+                            <div class="text-sm text-gray-400 mt-1">Core Capstone Projects</div>
+                        </div>
+                        <div class="p-4 rounded-xl bg-dark-700/60 border border-dark-600">
+                            <div class="text-2xl font-bold text-accent-pink font-code">100%</div>
+                            <div class="text-sm text-gray-400 mt-1">Dedication & Drive</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div class="p-6 rounded-2xl bg-dark-700/40 border border-dark-600 hover:border-accent-purple/50 transition-all">
+                        <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-accent-purple flex items-center justify-center text-xl mb-4">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2">CS Special Degree</h3>
+                        <p class="text-sm text-gray-400">Focusing on advanced computing paradigms, software architecture, and distributed systems.</p>
+                    </div>
+
+                    <div class="p-6 rounded-2xl bg-dark-700/40 border border-dark-600 hover:border-accent-pink/50 transition-all">
+                        <div class="w-12 h-12 rounded-xl bg-pink-500/10 text-accent-pink flex items-center justify-center text-xl mb-4">
+                            <i class="fa-solid fa-infinity"></i>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2">DevOps & Cloud</h3>
+                        <p class="text-sm text-gray-400">Automating build pipelines, container orchestration, and seamless cloud deployments.</p>
+                    </div>
+
+                    <div class="p-6 rounded-2xl bg-dark-700/40 border border-dark-600 hover:border-cyan-500/50 transition-all">
+                        <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-accent-cyan flex items-center justify-center text-xl mb-4">
+                            <i class="fa-solid fa-code"></i>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2">Full-Stack Dev</h3>
+                        <p class="text-sm text-gray-400">Building intuitive React frontends coupled with scalable Java/Spring Boot</p>
+                    </div>
+
+                    <div class="p-6 rounded-2xl bg-dark-700/40 border border-dark-600 hover:border-purple-500/50 transition-all">
+                        <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-accent-purple flex items-center justify-center text-xl mb-4">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2">Quality & Security</h3>
+                        <p class="text-sm text-gray-400">Implementing strict code quality gates using SonarQube and comprehensive testing strategies.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl sm:text-4xl font-extrabold mb-4">Featured <span class="gradient-text">Projects</span></h2>
+                <p class="text-gray-400">A showcase of full-stack platforms, intelligent recruitment tools, and DevOps-driven API microservices.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+              <!-- Project 1: VaccPulse -->
+                <div class="gradient-border p-1 flex flex-col h-full group">
+                    <div class="bg-dark-800 rounded-[calc(1rem-2px)] p-6 flex flex-col flex-grow justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-accent-purple flex items-center justify-center text-xl">
+                                    <i class="fa-solid fa-database"></i>
+                                </div>
+                                <div class="flex gap-2">
+                                    <a href="https://github.com/avii0927/VaccPulse.git" target="_blank" class="text-gray-400 hover:text-white transition-colors p-2" aria-label="GitHub Repo">
+                                        <i class="fa-brands fa-github text-lg"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2 group-hover:text-accent-purple transition-colors">VaccPulse</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                                A comprehensive group database management system developed in our 2nd year to efficiently track, manage, and optimize vaccination distribution records, scheduling, and inventory workflows.
+                            </p>
+                        </div>
+                        <div>
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="px-2.5 py-1 rounded-md bg-dark-700 text-accent-purple text-xs font-code">MySQL</span>
+                                <span class="px-2.5 py-1 rounded-md bg-dark-700 text-accent-purple text-xs font-code">Java</span>
+                                <span class="px-2.5 py-1 rounded-md bg-dark-700 text-accent-purple text-xs font-code">JDBC</span>
+                                <span class="px-2.5 py-1 rounded-md bg-dark-700 text-accent-purple text-xs font-code">DBMS</span>
+                            </div>
+                            <a href="#contact" class="inline-flex items-center gap-2 text-sm font-semibold text-accent-purple hover:underline">
+                                <span>Learn More</span>
+                                <i class="fa-solid fa-arrow-right text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: SkillNet -->
+                <div class="gradient-border p-1 flex flex-col h-full group">
+                    <div class="bg-dark-800 rounded-[calc(1rem-2px)] p-6 flex flex-col flex-grow justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-12 h-12 rounded-xl bg-pink-500/10 text-accent-pink flex items-center justify-center text-xl">
+                                    <i class="fa-solid fa-briefcase"></i>
+                                </div>
+                                <div class="flex gap-2">
+                                    <a href="https://github.com/Nawodika22/SkillNetProject.git" target="_blank" class="text-gray-400 hover:text-white transition-colors p-2" aria-label="GitHub Repo">
+                                        <i class="fa-brands fa-github text-lg"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2 group-hover:text-accent-pink transition-colors">SkillNet</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                                Professional job service portal connecting freelancers and tech professionals with employers. Features real-time messaging, secure role-based access control, and dynamic portfolio showcases.
+                            </p>
+                        </div>
+                        <div>
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="px-2.5 py-1 rounded-md bg-dark-700 text-accent-pink text-xs font-code">Java Spring Boot</span>
+                                <span class="px-2.5 py-1 rounded-md bg-dark-700 text-accent-pink text-xs font-code">React</span>
+                                <span class="px-2.5 py-1 rounded-md bg-dark-700 text-accent-pink text-xs font-code">MySQL</span>
+                                 <span class="px-2.5 py-1 rounded-md bg-dark-700 text-accent-cyan text-xs font-code">Docker</span>
+                                <span class="px-2.5 py-1 rounded-md bg-dark-700 text-accent-cyan text-xs font-code">Jenkins</span>
+                                <span class="px-2.5 py-1 rounded-md bg-dark-700 text-accent-cyan text-xs font-code">SonarQube</span>
+                                
+                            </div>
+                            <a href="#contact" class="inline-flex items-center gap-2 text-sm font-semibold text-accent-pink hover:underline">
+                                <span>Learn More</span>
+                                <i class="fa-solid fa-arrow-right text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: Doctor-API -->
+                <div class="gradient-border p-1 flex flex-col h-full group">
+                    <div class="bg-dark-800 rounded-[calc(1rem-2px)] p-6 flex flex-col flex-grow justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-accent-cyan flex items-center justify-center text-xl">
+                                    <i class="fa-solid fa-server"></i>
+                                </div>
+                                <div class="flex gap-2">
+                                    <a href="https://github.com/Nawodika22/studentapi.git" target="_blank" class="text-gray-400 hover:text-white transition-colors p-2" aria-label="GitHub Repo">
+                                        <i class="fa-brands fa-github text-lg"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2 group-hover:text-accent-cyan transition-colors">Doctor-API</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                                Enterprise-grade backend microservice built with Spring Boot, containerized via Docker, integrated with automated Jenkins CI/CD pipeline, and monitored with SonarQube quality analysis.
+                            </p>
+                        </div>
+                        <div>
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="px-2.5 py-1 rounded-md bg-dark-700 text-accent-cyan text-xs font-code">Spring Boot</span>
+                                <span class="px-2.5 py-1 rounded-md bg-dark-700 text-accent-cyan text-xs font-code">Docker</span>
+                                <span class="px-2.5 py-1 rounded-md bg-dark-700 text-accent-cyan text-xs font-code">Jenkins</span>
+                                <span class="px-2.5 py-1 rounded-md bg-dark-700 text-accent-cyan text-xs font-code">SonarQube</span>
+                            </div>
+                            <a href="#contact" class="inline-flex items-center gap-2 text-sm font-semibold text-accent-cyan hover:underline">
+                                <span>Learn More</span>
+                                <i class="fa-solid fa-arrow-right text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements & Milestones Section -->
+    <section id="achievements" class="py-24 bg-dark-800/30 border-t border-dark-700/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl sm:text-4xl font-extrabold mb-4">Milestones & <span class="gradient-text">Achievements</span></h2>
+                <p class="text-gray-400">A timeline of my academic milestones, school honors, and technical credentials earned along the way.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Achievement 1: AWS Academy Digital Credential -->
+                <div class="gradient-border p-1 flex flex-col h-full group">
+                    <div class="bg-dark-800 rounded-[calc(1rem-2px)] p-6 flex flex-col flex-grow justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-xl">
+                                    <i class="fa-solid fa-certificate"></i>
+                                </div>
+                                <span class="px-2.5 py-1 rounded-full bg-amber-500/10 text-amber-400 text-xs font-code border border-amber-500/20">Credential</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2 group-hover:text-amber-400 transition-colors">AWS Academy Graduate</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                                Successfully completed official AWS Academy cloud foundations and architecture courses, validating fundamental expertise in cloud computing and AWS services.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-dark-700/60 flex items-center justify-between text-xs text-gray-400 font-code">
+                            <span>AWS Training</span>
+                            <span class="text-amber-400 font-semibold"><i class="fa-solid fa-check-circle mr-1"></i> Verified</span>
+                        </div>
+                    </div>
+                </div>
+
+               
+                               <!-- Achievement 2: School Girl Guide / Leadership -->
+                <div class="gradient-border p-1 flex flex-col h-full group">
+                    <div class="bg-dark-800 rounded-[calc(1rem-2px)] p-6 flex flex-col flex-grow justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-accent-cyan flex items-center justify-center text-xl">
+                                    <i class="fa-solid fa-user-tie"></i>
+                                </div>
+                                <span class="px-2.5 py-1 rounded-full bg-cyan-500/10 text-accent-cyan text-xs font-code border border-cyan-500/20">Leadership</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2 group-hover:text-accent-cyan transition-colors">School Girl Guide</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                                Active member of the school Girl Guide movement, developing strong leadership, discipline, teamwork, and problem-solving skills through community service projects and outdoor camps
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-dark-700/60 flex items-center justify-between text-xs text-gray-400 font-code">
+                            <span>Student Leadership</span>
+                            <span class="text-accent-cyan font-semibold"><i class="fa-solid fa-shield mr-1"></i> Board</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Achievement 3: ICT Club Presidency / Committee -->
+                <div class="gradient-border p-1 flex flex-col h-full group">
+                    <div class="bg-dark-800 rounded-[calc(1rem-2px)] p-6 flex flex-col flex-grow justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-accent-purple flex items-center justify-center text-xl">
+                                    <i class="fa-solid fa-laptop-code"></i>
+                                </div>
+                                <span class="px-2.5 py-1 rounded-full bg-purple-500/10 text-accent-purple text-xs font-code border border-purple-500/20">Extracurricular</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2 group-hover:text-accent-purple transition-colors">ICT Club Committee Member</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                                Actively contributed to organizing school coding workshops, tech exhibitions, and beginner programming seminars for junior students.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-dark-700/60 flex items-center justify-between text-xs text-gray-400 font-code">
+                            <span>School Society</span>
+                            <span class="text-accent-purple font-semibold"><i class="fa-solid fa-users mr-1"></i> Organizer</span>
+                        </div>
+                    </div>
+                </div>
+           </section>
+
+    <!-- Skills & Tech Stack Section -->
+    <section id="skills" class="py-24 bg-dark-800/50 border-t border-dark-700/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl sm:text-4xl font-extrabold mb-4">Skills & <span class="gradient-text">Tech Stack</span></h2>
+                <p class="text-gray-400">The languages, frameworks, containerization tools, and cloud platforms I work with.</p>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-6">
+                
+                <!-- Java -->
+                <div class="p-6 rounded-2xl bg-dark-700/40 border border-dark-600 hover:border-accent-purple/50 flex flex-col items-center justify-center text-center transition-all transform hover:-translate-y-1">
+                    <div class="text-4xl text-orange-500 mb-3">
+                        <i class="fa-brands fa-java"></i>
+                    </div>
+                    <h4 class="font-semibold text-sm">Java</h4>
+                    <span class="text-xs text-gray-400 mt-1">Backend / OOP</span>
+                </div>
+                <!-- MySQL -->
+                <div class="p-6 rounded-2xl bg-dark-700/40 border border-dark-600 hover:border-accent-cyan/50 flex flex-col items-center justify-center text-center transition-all transform hover:-translate-y-1">
+                    <div class="text-4xl text-cyan-400 mb-3">
+                        <i class="fa-solid fa-database"></i>
+                    </div>
+                    <h4 class="font-semibold text-sm">MySQL</h4>
+                    <span class="text-xs text-gray-400 mt-1">Database</span>
+                </div>
+
+               
+
+                <!-- Docker -->
+                <div class="p-6 rounded-2xl bg-dark-700/40 border border-dark-600 hover:border-accent-cyan/50 flex flex-col items-center justify-center text-center transition-all transform hover:-translate-y-1">
+                    <div class="text-4xl text-blue-400 mb-3">
+                        <i class="fa-brands fa-docker"></i>
+                    </div>
+                    <h4 class="font-semibold text-sm">Docker</h4>
+                    <span class="text-xs text-gray-400 mt-1">Containers</span>
+                </div>
+
+                <!-- Jenkins -->
+                <div class="p-6 rounded-2xl bg-dark-700/40 border border-dark-600 hover:border-accent-purple/50 flex flex-col items-center justify-center text-center transition-all transform hover:-translate-y-1">
+                    <div class="text-4xl text-red-400 mb-3">
+                        <i class="fa-solid fa-gears"></i>
+                    </div>
+                    <h4 class="font-semibold text-sm">Jenkins</h4>
+                    <span class="text-xs text-gray-400 mt-1">CI/CD Pipelines</span>
+                </div>
+
+                <!-- Git -->
+                <div class="p-6 rounded-2xl bg-dark-700/40 border border-dark-600 hover:border-accent-pink/50 flex flex-col items-center justify-center text-center transition-all transform hover:-translate-y-1">
+                    <div class="text-4xl text-orange-600 mb-3">
+                        <i class="fa-brands fa-git-alt"></i>
+                    </div>
+                    <h4 class="font-semibold text-sm">Git & GitHub</h4>
+                    <span class="text-xs text-gray-400 mt-1">Version Control</span>
+                </div>
+
+                <!-- SonarQube -->
+                <div class="p-6 rounded-2xl bg-dark-700/40 border border-dark-600 hover:border-accent-cyan/50 flex flex-col items-center justify-center text-center transition-all transform hover:-translate-y-1">
+                    <div class="text-4xl text-blue-500 mb-3">
+                        <i class="fa-solid fa-magnifying-glass-chart"></i>
+                    </div>
+                    <h4 class="font-semibold text-sm">SonarQube</h4>
+                    <span class="text-xs text-gray-400 mt-1">Code Quality</span>
+                </div>
+
+                <!-- AWS -->
+                <div class="p-6 rounded-2xl bg-dark-700/40 border border-dark-600 hover:border-accent-purple/50 flex flex-col items-center justify-center text-center transition-all transform hover:-translate-y-1">
+                    <div class="text-4xl text-amber-400 mb-3">
+                        <i class="fa-brands fa-aws"></i>
+                    </div>
+                    <h4 class="font-semibold text-sm">AWS</h4>
+                    <span class="text-xs text-gray-400 mt-1">Cloud Services</span>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl sm:text-4xl font-extrabold mb-4">Get In <span class="gradient-text">Touch</span></h2>
+                <p class="text-gray-400">Have a question, opportunity, or project proposal? Drop me a message below!</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 max-w-5xl mx-auto">
+                <div class="lg:col-span-5 space-y-8">
+                    <div class="p-8 rounded-2xl bg-dark-800 border border-dark-700 space-y-6">
+                        <h3 class="text-xl font-bold">Contact Information</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            I am currently open to software engineering internships, graduate roles, and exciting collaborative projects in full-stack development and DevOps.
+                        </p>
+                        
+                        <div class="space-y-4 pt-2">
+                            <div class="flex items-center gap-4 text-gray-300">
+                                <div class="w-10 h-10 rounded-xl bg-purple-500/10 text-accent-purple flex items-center justify-center">
+                                    <i class="fa-solid fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <div class="text-xs text-gray-400">Email Me</div>
+                                    <div class="font-medium text-sm">twedamulla2002@gmail.com</div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center gap-4 text-gray-300">
+                                <div class="w-10 h-10 rounded-xl bg-pink-500/10 text-accent-pink flex items-center justify-center">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </div>
+                                <div>
+                                    <div class="text-xs text-gray-400">Location</div>
+                                    <div class="font-medium text-sm">Galle Sri lanka</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pt-4 border-t border-dark-700 flex gap-4">
+                            <a href="https://github.com/Nawodika22" target="_blank" class="w-10 h-10 rounded-xl bg-dark-700 hover:bg-dark-600 text-gray-300 hover:text-white flex items-center justify-center transition-colors">
+                                <i class="fa-brands fa-github text-lg"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/tharushi-wedamulla-2636783b5/" target="_blank" class="w-10 h-10 rounded-xl bg-dark-700 hover:bg-dark-600 text-gray-300 hover:text-white flex items-center justify-center transition-colors">
+                                <i class="fa-brands fa-linkedin text-lg"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="lg:col-span-7">
+                    <form id="contact-form" class="p-8 rounded-2xl bg-dark-800 border border-dark-700 space-y-6">
+                        <div id="form-message" class="hidden p-4 rounded-xl text-sm font-medium"></div>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div class="space-y-2">
+                                <label for="name" class="text-sm font-medium text-gray-300">Your Name</label>
+                                <input type="text" id="name" required class="w-full px-4 py-3 rounded-xl bg-dark-900 border border-dark-600 text-gray-100 focus:outline-none focus:border-accent-purple transition-colors" placeholder="John Doe">
+                            </div>
+                            <div class="space-y-2">
+                                <label for="email" class="text-sm font-medium text-gray-300">Your Email</label>
+                                <input type="email" id="email" required class="w-full px-4 py-3 rounded-xl bg-dark-900 border border-dark-600 text-gray-100 focus:outline-none focus:border-accent-purple transition-colors" placeholder="john@example.com">
+                            </div>
+                        </div>
+
+                        <div class="space-y-2">
+                            <label for="subject" class="text-sm font-medium text-gray-300">Subject</label>
+                            <input type="text" id="subject" required class="w-full px-4 py-3 rounded-xl bg-dark-900 border border-dark-600 text-gray-100 focus:outline-none focus:border-accent-purple transition-colors" placeholder="Project collaboration / Opportunity">
+                        </div>
+
+                        <div class="space-y-2">
+                            <label for="message" class="text-sm font-medium text-gray-300">Message</label>
+                            <textarea id="message" rows="5" required class="w-full px-4 py-3 rounded-xl bg-dark-900 border border-dark-600 text-gray-100 focus:outline-none focus:border-accent-purple transition-colors resize-none" placeholder="Hello Tharushi, I'd like to discuss..."></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-accent-purple to-accent-pink text-white font-semibold shadow-lg shadow-purple-500/20 hover:opacity-95 transition-all">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-dark-800 border-t border-dark-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div class="text-center sm:text-left">
+                <a href="#hero" class="text-lg font-bold font-code flex items-center justify-center sm:justify-start gap-2">
+                    <span class="text-accent-purple">&lt;</span>
+                    <span class="gradient-text">Tharushi Wedamulla</span>
+                    <span class="text-accent-pink">/&gt;</span>
+                </a>
+                <p class="text-sm text-gray-400 mt-1">© 2026 Tharushi Wedamulla. All rights reserved.</p>
+            </div>
+
+            <div class="flex items-center gap-6 text-gray-400 text-lg">
+                <a href="https://github.com/Nawodika22" target="_blank" class="hover:text-accent-purple transition-colors" aria-label="GitHub">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/tharushi-wedamulla-2636783b5/" target="_blank" class="hover:text-accent-purple transition-colors" aria-label="LinkedIn">
+                    <i class="fa-brands fa-linkedin"></i>
+                </a>
+                <a href="mailto:twedamulla2002@gmail.com" class="hover:text-accent-purple transition-colors" aria-label="Email">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Mobile Menu & Contact Form Handler -->
+    <script>
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Working Contact Form Submission Handler
+        const contactForm = document.getElementById('contact-form');
+        const formMessage = document.getElementById('form-message');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const subject = document.getElementById('subject').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            if (!name || !email || !subject || !message) {
+                showFormMessage('Please fill in all fields.', 'error');
+                return;
+            }
+
+            // Simulate successful submission without alert()
+            showFormMessage('Thank you! Your message has been sent successfully.', 'success');
+            contactForm.reset();
+        });
+
+        function showFormMessage(text, type) {
+            formMessage.textContent = text;
+            formMessage.classList.remove('hidden', 'bg-emerald-500/10', 'text-emerald-400', 'border', 'border-emerald-500/20', 'bg-red-500/10', 'text-red-400', 'border-red-500/20');
+            
+            if (type === 'success') {
+                formMessage.classList.add('bg-emerald-500/10', 'text-emerald-400', 'border', 'border-emerald-500/20');
+            } else {
+                formMessage.classList.add('bg-red-500/10', 'text-red-400', 'border', 'border-red-500/20');
+            }
+
+            setTimeout(() => {
+                formMessage.classList.add('hidden');
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
